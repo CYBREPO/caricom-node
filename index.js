@@ -1,21 +1,24 @@
 import express from 'express';
-import dbconnect from './dbconnect.js';
+import dbConnect from './dbconnect.js';
+import  cors from 'cors';
 import banner from './routes/banner.js';
-import cors from 'cors';
+import path from 'path';
+const __dirname = path.resolve();
 
 const app = express();
+const port = process.env.port;
+
 app.use(cors({
-    origin: '*',
-    credentials: true,
-}))
-dbconnect;
+    origin: "*",
+    credentials: true
+}));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/cat', (req, res) => {
-    res.status(200).json('success')
-})
+app.use('api/banner/',banner);
 
-app.use('/api/banner', banner)
+dbConnect();
 
-app.listen('8080', () => {
-    console.log('listening to port 8080')
+app.listen((port), () => {
+    console.log('listening to port 8000')
 })

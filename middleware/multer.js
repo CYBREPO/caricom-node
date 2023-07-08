@@ -1,11 +1,14 @@
-import multer from "multer";
+import  multer from 'multer';
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+// set storage
+var storage = multer.diskStorage({
+    destination : function ( req , file , cb ){
         cb(null, 'public')
     },
-    filename: function (req, file, cb) {
+    filename : function (req, file , cb){
+        // image.jpg
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
+
         cb(null, file.fieldname + '-' + Date.now() + ext)
     }
 })
