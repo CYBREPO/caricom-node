@@ -18,6 +18,5 @@ router.get('/getBanner', getBanner)
       .get('/getAllSubSidebar', getAllSubSidebar)
       .post('/saveUpdateSubSideBar', saveUpdateSubSideBar)
       .get('/deleteSubSidebar', deleteSubSidebar)
-      ;
 
 export default router;

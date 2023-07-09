@@ -5,7 +5,7 @@ import removeFiles from './fileRemove.js';
 
 const getBanner = asyncHandler(async (req, res) => {
     
-    let result  = await banner.find({}).exec();
+    let result  = await banner.findOne({}).exec();
 
     if(result)
         return res.status(constants.OK).json({success: true, data: result});
