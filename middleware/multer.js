@@ -9,7 +9,9 @@ var storage = multer.diskStorage({
         // image.jpg
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
 
-        cb(null, file.fieldname + '-' + Date.now() + ext)
+        const fieldName = file.fieldname.includes('bannerSlider') ? 'bannerSlider' : file.fieldname;
+
+        cb(null, fieldName + '-' + Date.now() + ext)
     }
 })
 

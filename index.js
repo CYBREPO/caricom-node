@@ -15,10 +15,10 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('api/banner/',banner);
+app.use('/api/banner',banner);
 
 dbConnect();
 
 app.listen((port), () => {
-    console.log('listening to port 8000')
+    console.log('listening to port ' + port)
 })
