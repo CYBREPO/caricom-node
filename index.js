@@ -1,7 +1,9 @@
 import express from 'express';
 import dbConnect from './dbconnect.js';
-import  cors from 'cors';
+import cors from 'cors';
 import banner from './routes/banner.js';
+import gridSixRoute from './routes/gridSixRoute.js'
+
 import path from 'path';
 const __dirname = path.resolve();
 
@@ -15,7 +17,8 @@ app.use(cors({
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/banner',banner);
+app.use('/api/banner', banner);
+app.use('/api/grid', gridSixRoute);
 
 dbConnect();
 
