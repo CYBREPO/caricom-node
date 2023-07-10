@@ -36,7 +36,7 @@ const saveUpdateSubSideBar = asyncHandler(async (req, res) => {
 const deleteSubSidebar = asyncHandler(async (req, res) => {
 
     if (req.query.id) {
-        let result = await subSidebar.findByIdAndDelete(req.body.id).exec();
+        let result = await subSidebar.findByIdAndDelete(req.query.id).exec();
         if (result)
             return res.status(constants.OK).json({ success: true, data: result, message: "Deleted successfully" });
     }

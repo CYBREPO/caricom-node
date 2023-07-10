@@ -16,8 +16,6 @@ const getBanner = asyncHandler(async (req, res) => {
 
 const saveUpdateBanner = asyncHandler(async (req, res) => {
     if (req.body) {
-        console.log(req.body);
-        console.log(req.files);
         //update
         if(req.body.id){
             let result = await banner.findByIdAndDelete(req.body.id);
@@ -33,7 +31,7 @@ const saveUpdateBanner = asyncHandler(async (req, res) => {
                 image: file?.filename,
             });
         }
-        
+
         let result = await banner.create({
             bannerSlider: bannerSlider,
             bannerTwoSectionImage: req.files?.find(m => m.fieldname == "bannerTwoSectionImage")?.filename,
