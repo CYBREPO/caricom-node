@@ -54,6 +54,7 @@ const deleteGridSix = asyncHandler(async (req, res) => {
     if (req.query.id) {
         let result = await gridsix.findByIdAndDelete(req.query.id).exec();
         if (result) {
+            removeFiles([result.gridSixImage]);
             return res.status(constants.OK).json({ success: true, message: 'Deleted successfully' })
         }
         res.status(constants.VALIDATION_ERROR);
